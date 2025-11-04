@@ -35,6 +35,7 @@ sudo pacman -Syu
 
 * Either open it with your shortcut, or click the application launcher located on the bottom left of the panel.
 * Navigate to the "System" submenu, then locate & launch the program entitled: `kitty`
+* Afterwards you can right click on the icon on your Task Manager and pin it for easy access later.
 
 ### Essential build tools, you already installed these during install but just to be sure
 ```bash
