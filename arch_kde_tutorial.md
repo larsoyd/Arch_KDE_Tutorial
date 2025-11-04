@@ -581,6 +581,8 @@ nano /etc/kernel/cmdline
 #
 # loglevel=3 just increases verbosity in logging.
 #
+# zswap.compressor=lz4 switches compressor to lz4 from zstd, lz4 is considered faster
+#
 # If you are using AMDGPU and Radeon and it insists on using Radeon instead,
 # You can add either of these depending on your card here to force the loading of AMDGPU:
 #
@@ -588,7 +590,7 @@ nano /etc/kernel/cmdline
 # Sea Islands (CIK): radeon.cik_support=0 amdgpu.cik_support=1
 #
 ## /etc/kernel/cmdline
-rw rootflags=noatime nowatchdog loglevel=3
+rw rootflags=noatime nowatchdog loglevel=3 zswap.compressor=lz4
 ```
 
 #### Make the ESP directory
