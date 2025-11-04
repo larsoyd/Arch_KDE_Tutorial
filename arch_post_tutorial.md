@@ -124,7 +124,8 @@ source ~/.zshrc
 ### 3.1 Pacman candy
 Edit `/etc/pacman.conf`:
 ```ini
-# Color adds color (duh), ILoveCandy is a fun optional easter egg type setting that adds animations to when you update pacman. No spoilers.
+# Color adds color (duh),
+# ILoveCandy is a fun setting that adds animations to when you update pacman. 
 Color                      # uncomment
 ILoveCandy                 # add under Color
 ```
