@@ -476,14 +476,14 @@ alias ytdlv='yt-dlp -f bestvideo+bestaudio \
     -o "$HOME/Videos/%(title)s.%(ext)s"'
 ```
 
-Then write `source ~/.zshrc`
+Save and then run: `source ~/.zshrc`
 
-How to use:
+#### How to use:
 
 ytdla downloads audio, ytdlv downloads video and places them in appropriate folders with names.
 You simply write either of these and a link. 
 
-DISCLAIMER: I do not condone the breaking of terms of services or piracy with the use of this tool.
+**DISCLAIMER:** I do not condone the breaking of terms of services or piracy with the use of this tool.
 
 ## Video Playback
 
