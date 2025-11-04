@@ -185,6 +185,7 @@ sudo true
 ### Persist configure X11 keymap for non U.S keyboards
 
 ```bash
+# If it doesn't exist, create directory
 sudo mkdir -p /etc/X11/xorg.conf.d
 
 # even if you dont use x11 it's good to set this just in case
