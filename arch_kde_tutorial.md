@@ -465,7 +465,7 @@ pacman -S --needed \
   linux-zen-headers linux-lts-headers \
   nvidia-open-dkms nvidia-utils libva-nvidia-driver libva-utils cuda \
   pacman-contrib git wget hunspell hunspell-en_us quota-tools usbutils \
-  noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji terminus-font ttf-dejavu ttf-liberation \
+  noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji terminus-font ttf-dejavu ttf-liberation ttf-nerd-fonts-symbols \
   base-devel
 ```
 
@@ -479,7 +479,7 @@ pacman -S --needed \
   mesa vulkan-radeon \
   libva libva-utils \
   quota-tools hunspell hunspell-en_us usbutils \
-  noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji terminus-font ttf-dejavu ttf-liberation \
+  noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji terminus-font ttf-dejavu ttf-liberation ttf-nerd-fonts-symbols \
   pacman-contrib git wget \
   base-devel
 ```
@@ -493,7 +493,7 @@ pacman -S --needed \
   sddm sddm-kcm linux-zen-headers linux-lts-headers kdegraphics-thumbnailers ffmpegthumbs \
   mesa vulkan-intel \
   libva libva-utils intel-media-driver \
-  noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji terminus-font ttf-dejavu ttf-liberation \
+  noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji terminus-font ttf-dejavu ttf-liberation ttf-nerd-fonts-symbols \
   hunspell hunspell-en_us quota-tools usbutils \
   pacman-contrib git wget \
   base-devel
