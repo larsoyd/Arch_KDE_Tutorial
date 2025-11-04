@@ -454,6 +454,36 @@ sudo udevadm trigger --subsystem-match=usb --action=add
 grep -H . /sys/bus/usb/devices/*/power/{control,runtime_status}
 ```
 
+## YT-DLP and aliases I use with it:
+
+YT-DLP is a downloader for online media hosted on sites. It's very good.
+
+Install:
+```bash
+yay -S --needed --noconfirm yt-dlp
+```
+
+Here are some aliases I use, add to `~/.zshrc` with `nano` on the bottom:
+
+```bash
+alias ytdla='yt-dlp -f bestaudio \
+                 --extract-audio \
+                 --audio-format mp3 \
+                 -o "/home/$USER/Music/%(title)s.%(ext)s"'
+
+alias ytdlv='yt-dlp -f bestvideo+bestaudio \
+    --merge-output-format mkv \
+    -o "$HOME/Videos/%(title)s.%(ext)s"'
+```
+
+Then write `source ~/.zshrc`
+
+How to use:
+
+ytdla downloads audio, ytdlv downloads video and places them in appropriate folders with names.
+You simply write either of these and a link. 
+
+DISCLAIMER: I do not condone the breaking of terms of services or piracy with the use of this tool.
 
 ## Video Playback
 
