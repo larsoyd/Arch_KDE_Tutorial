@@ -250,6 +250,7 @@ widget.use-xdg-desktop-portal.file-picker → 1 (always)
 # Sometimes Firefox does not have the minimize and maximize buttons
 # You can try this remedy:
 gsettings set org.gnome.desktop.wm.preferences button-layout 'icon:minimize,maximize,close'
+# Then log out and back in
 
 # If that still doesn't work, then try:
 yay -S --needed --noconfirm xdg-desktop-portal-gtk
