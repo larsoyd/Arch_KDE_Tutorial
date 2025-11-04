@@ -744,31 +744,6 @@ shutdown now
 # This will also persist on reboots as well. Two odd bugs I've ran into but not something that persists afterwards.
 ```
 
-## Post-Installation Verification
-
-After rebooting, verify everything is working correctly:
-
-```bash
-# Check mounted filesystems
-findmnt -o TARGET,SOURCE,FSTYPE | grep -E '/ |/home|/boot'
-
-
-# Check zswap is active
-dmesg | grep -i zswap
-# Expect: "zswap: loaded using pool zstd/zsmalloc"
-cat /sys/module/zswap/parameters/enabled
-cat /sys/module/zswap/parameters/max_pool_percent
-cat /sys/module/zswap/parameters/shrinker_enabled
-swapon --show
-```
-
-> **Expected Results:**
->
-> * KDE Plasma (Wayland) login screen should appear
-> * Zswap swap active
-> * Auto-mounted root and boot partitions
-> * Network connectivity via NetworkManager
-
 ---
 
 # 1) OPTIONAL: Post-Install Tutorial
@@ -779,4 +754,5 @@ Head to `arch_post_tutorial.md` to do the post-install tutorial.
 # 2) OPTIONAL: How to fix those annoying 'missing firmware' warnings in mkinitcpio
 
 * Whenever you write `mkinitcpio -P` you might notice it keeps warning you about firmware that you are supposedly missing.
+* This only seems to happen on fallback which we disabled here but if you didn't you will see them.
 * If this bothers you, check out my tutorial, `mkinitcpio-fix.md` to fix this.
