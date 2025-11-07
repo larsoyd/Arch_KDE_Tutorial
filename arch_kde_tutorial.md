@@ -271,44 +271,46 @@ mount /dev/disk/by-label/root /mnt
 
 #### Create and mount EFI directory with strict masks
 
-Here is some information on why I am mounting EFI like this:
+```bash
+mkdir -p /mnt/efi
+mount -o fmask=0177,dmask=0077,noexec,nodev,nosuid /dev/disk/by-label/EFI /mnt/efi
+```
 
-fmask=0177
+##### Here is some information on why I am mounting EFI like this:
+
+##### fmask=0177
 
     Sets file permissions mask for FAT filesystems
     0177 means: owner gets read/write (6), group/others get nothing (0)
     Results in: -rw------- (600 permissions)
     Purpose: Prevents other users from reading/writing EFI files
 
-dmask=0077
+##### dmask=0077
 
     Sets directory permissions mask
     0077 means: owner gets full access (7), group/others get nothing (0)
     Results in: drwx------ (700 permissions)
     Purpose: Only root can access EFI directories
 
-Security Options
+##### Security Options
 
-noexec
+##### noexec
 
     Prevents execution of any binaries from this filesystem
     Purpose: Security hardening - EFI partition shouldn't need to execute files from Linux
 
-nodev
+##### nodev
 
     Disallows device file interpretation
     Purpose: Prevents creation of device nodes that could be security risks
 
-nosuid
+##### nosuid
 
     Ignores setuid/setgid bits
     Purpose: Prevents privilege escalation via setuid binaries
 
+---
 
-```bash
-mkdir -p /mnt/efi
-mount -o fmask=0177,dmask=0077,noexec,nodev,nosuid /dev/disk/by-label/EFI /mnt/efi
-```
 
 ## Step 3: Base System Install
 
