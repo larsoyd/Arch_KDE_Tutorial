@@ -276,38 +276,17 @@ mkdir -p /mnt/efi
 mount -o fmask=0177,dmask=0077,noexec,nodev,nosuid /dev/disk/by-label/EFI /mnt/efi
 ```
 
-##### Here is some information on why I am mounting EFI like this:
+### Here is some information on why I am mounting EFI like this:
 
-##### fmask=0177
+```md
+Those options are a security-friendly way to mount the EFI System Partition. They won’t get in your way for normal use.
 
-    Sets file permissions mask for FAT filesystems
-    0177 means: owner gets read/write (6), group/others get nothing (0)
-    Results in: -rw------- (600 permissions)
-    Purpose: Prevents other users from reading/writing EFI files
+fmask=0177 and dmask=0077: VFAT does not store Unix permissions. These masks tell the kernel how to fake them: files become 600 (owner read/write, no exec), directories 700 (owner only). In other words, only root can read or write there, and files are not marked executable. They are the right defaults for an EFI partition and won’t interfere with normal operation.
 
-##### dmask=0077
-
-    Sets directory permissions mask
-    0077 means: owner gets full access (7), group/others get nothing (0)
-    Results in: drwx------ (700 permissions)
-    Purpose: Only root can access EFI directories
-
-##### Security Options
-
-##### noexec
-
-    Prevents execution of any binaries from this filesystem
-    Purpose: Security hardening - EFI partition shouldn't need to execute files from Linux
-
-##### nodev
-
-    Disallows device file interpretation
-    Purpose: Prevents creation of device nodes that could be security risks
-
-##### nosuid
-
-    Ignores setuid/setgid bits
-    Purpose: Prevents privilege escalation via setuid binaries
+noexec: blocks running programs from that filesystem. 
+nodev: device files on that filesystem are not treated as devices. 
+nosuid: any setuid or setgid bit is ignored, so binaries there cannot gain elevated privileges. 
+```
 
 ---
 
