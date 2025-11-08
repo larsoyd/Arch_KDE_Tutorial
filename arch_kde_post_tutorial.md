@@ -546,6 +546,7 @@ sudo mkdir -p /home/$USER/bin/
 sudo nano /home/$USER/bin/ytclip
 ```
 
+Add this script:
 ```bash                             
 #!/usr/bin/env bash
 set -euo pipefail
@@ -622,10 +623,13 @@ exec yt-dlp "$URL" \
   ```
 
 #### How to use:
+
+```bash
 ytclip <url> <start> - <end> [best|360p|720p|1080p]
 Examples:
   ytclip '(youtube link)' 3:51 - 3:54 360p
   ytclip '(youtube link)' 00:03:51 - 00:03:54 best
+```
 
 **DISCLAIMER:** I do not condone the breaking of terms of services or piracy with the use of this tool.
 
