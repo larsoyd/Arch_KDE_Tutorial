@@ -542,8 +542,8 @@ You simply write either of these and a link.
 Here is a script I made that makes clipping videos easier.
 
 ```bash
-sudo mkdir -p /home/$USER/bin/
-sudo nano /home/$USER/bin/ytclip
+mkdir -p /home/$USER/bin/
+nano /home/$USER/bin/ytclip
 ```
 
 Add this script:
