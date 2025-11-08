@@ -539,7 +539,7 @@ You simply write either of these and a link.
 
 ---
 
-Here is a script I made that makes clipping videos on YT easier.
+Here is a script I made that makes clipping videos easier.
 
 ```bash
 sudo mkdir -p /home/$USER/bin/
@@ -554,8 +554,8 @@ set -euo pipefail
 usage() {
   echo "Usage: ytclip <url> <start> - <end> [best|360p|720p|1080p]"
   echo "Examples:"
-  echo "  ytclip 'https://www.youtube.com/watch?v=QYM3TWf_G38' 3:51 - 3:54 360p"
-  echo "  ytclip 'https://www.youtube.com/watch?v=QYM3TWf_G38' 00:03:51 - 00:03:54 best"
+  echo "  ytclip 'www.example.fake' 3:51 - 3:54 360p"
+  echo "  ytclip 'www.example.fake' 00:03:51 - 00:03:54 best"
   exit 1
 }
 
@@ -627,9 +627,11 @@ exec yt-dlp "$URL" \
 ```bash
 ytclip <url> <start> - <end> [best|360p|720p|1080p]
 Examples:
-  ytclip '(youtube link)' 3:51 - 3:54 360p
-  ytclip '(youtube link)' 00:03:51 - 00:03:54 best
+  ytclip '(link)' 3:51 - 3:54 360p
+  ytclip '(link)' 00:03:51 - 00:03:54 best
 ```
+
+#### DISCLAIMER: I do not condone breaking site ToS with this tool, nor any other form of piracy.
 
 ---
 
