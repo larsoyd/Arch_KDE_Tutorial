@@ -513,6 +513,10 @@ Install:
 yay -S --needed --noconfirm yt-dlp
 ```
 
+---
+
+#### OPTIONAL QoL FOR YT-DLP:
+
 Here are some aliases I use, add to `~/.zshrc` with `nano` on the bottom:
 
 ```bash
@@ -533,7 +537,99 @@ Save and then run: `source ~/.zshrc`
 ytdla downloads audio, ytdlv downloads video and places them in appropriate folders with names.
 You simply write either of these and a link. 
 
+---
+
+Here is a script I made that makes clipping videos on YT easier.
+
+```bash
+sudo mkdir -p /home/$USER/bin/
+sudo nano /home/$USER/bin/ytclip
+```
+
+```bash                             
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  echo "Usage: ytclip <url> <start> - <end> [best|360p|720p|1080p]"
+  echo "Examples:"
+  echo "  ytclip 'https://www.youtube.com/watch?v=QYM3TWf_G38' 3:51 - 3:54 360p"
+  echo "  ytclip 'https://www.youtube.com/watch?v=QYM3TWf_G38' 00:03:51 - 00:03:54 best"
+  exit 1
+}
+
+command -v yt-dlp >/dev/null 2>&1 || { echo "yt-dlp not found"; exit 2; }
+command -v ffmpeg >/dev/null 2>&1 || { echo "ffmpeg not found"; exit 2; }
+
+[[ $# -lt 4 ]] && usage
+
+URL="$1"
+# Support either "<start> - <end>" or "<start>-<end>"
+if [[ "${3:-}" == "-" ]]; then
+  START="$2"
+  END="$4"
+  QUALITY="${5:-best}"
+elif [[ "$2" == *"-"* && -n "${3:-}" ]]; then
+  IFS='-' read -r START END <<<"$2"
+  START="$(echo "$START" | tr -d ' ')"
+  END="$(echo "$END" | tr -d ' ')"
+  QUALITY="${3:-best}"
+else
+  # Fallback: <url> <start> <end> [quality]
+  START="$2"
+  END="$3"
+  QUALITY="${4:-best}"
+fi
+
+# Normalise quality label
+QUALITY="$(echo "$QUALITY" | tr '[:upper:]' '[:lower:]')"
+
+# Map quality to a yt-dlp format selector.
+# Height filters use official format selection syntax. :contentReference[oaicite:2]{index=2}
+case "$QUALITY" in
+  best)
+    FMT='bv*+ba/best'
+    ;;
+  360p)
+    FMT='bv*[height<=360]+ba/b[height<=360]'
+    ;;
+  720p)
+    FMT='bv*[height<=720]+ba/b[height<=720]'
+    ;;
+  1080p)
+    FMT='bv*[height<=1080]+ba/b[height<=1080]'
+    ;;
+  *)
+    echo "Unknown quality: $QUALITY"
+    usage
+    ;;
+esac
+
+# Prefer broadly compatible outputs and containers.
+# -S sorts formats to prefer h264+aac and mp4 where possible. :contentReference[oaicite:3]{index=3}
+SORT_PREF='res,codec:av1:vp9:h264,ext'
+
+# Safe tags for filename (turn 3:51 into 3m51s)
+start_tag="${START//:/m}s"
+end_tag="${END//:/m}s"
+
+# Perform frame-accurate clipping by forcing keyframes at cuts.
+# This re-encodes the segment for accuracy. :contentReference[oaicite:4]{index=4}
+exec yt-dlp "$URL" \
+  -f "$FMT" -S "$SORT_PREF" --merge-output-format mp4/mkv \
+  --download-sections "*${START}-${END}" --force-keyframes-at-cuts \
+  -o "%(id)s_${start_tag}_${end_tag}.%(ext)s"
+  ```
+
+#### How to use:
+ytclip <url> <start> - <end> [best|360p|720p|1080p]
+Examples:
+  ytclip '(youtube link)' 3:51 - 3:54 360p
+  ytclip '(youtube link)' 00:03:51 - 00:03:54 best
+
 **DISCLAIMER:** I do not condone the breaking of terms of services or piracy with the use of this tool.
+
+---
 
 ## Video Playback
 
