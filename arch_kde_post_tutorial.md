@@ -513,11 +513,9 @@ Install:
 yay -S --needed --noconfirm yt-dlp
 ```
 
----
-
 #### OPTIONAL QoL FOR YT-DLP:
 
-Here are some aliases I use, add to `~/.zshrc` with `nano` on the bottom:
+- Here are some aliases I use, add to `~/.zshrc` with `nano` on the bottom:
 
 ```bash
 alias ytdla='yt-dlp -f bestaudio \
@@ -537,7 +535,7 @@ Save and then run: `source ~/.zshrc`
 ytdla downloads audio, ytdlv downloads video and places them in appropriate folders with names.
 You simply write either of these and a link. 
 
-Here is a script I made that makes clipping videos easier.
+- Here is a script I made that makes clipping videos easier.
 
 ```bash
 mkdir -p /home/$USER/bin/
@@ -631,7 +629,6 @@ Examples:
 
 #### DISCLAIMER: I do not condone breaking site ToS with this tool, nor any other form of piracy.
 
----
 
 ## Video Playback
 
