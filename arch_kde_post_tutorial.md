@@ -586,7 +586,7 @@ fi
 QUALITY="$(echo "$QUALITY" | tr '[:upper:]' '[:lower:]')"
 
 # Map quality to a yt-dlp format selector.
-# Height filters use official format selection syntax. :contentReference[oaicite:2]{index=2}
+# Height filters use official format selection syntax.
 case "$QUALITY" in
   best)
     FMT='bv*+ba/best'
@@ -607,7 +607,7 @@ case "$QUALITY" in
 esac
 
 # Prefer broadly compatible outputs and containers.
-# -S sorts formats to prefer h264+aac and mp4 where possible. :contentReference[oaicite:3]{index=3}
+# -S sorts formats to prefer h264+aac and mp4 where possible.
 SORT_PREF='res,codec:av1:vp9:h264,ext'
 
 # Safe tags for filename (turn 3:51 into 3m51s)
@@ -615,7 +615,7 @@ start_tag="${START//:/m}s"
 end_tag="${END//:/m}s"
 
 # Perform frame-accurate clipping by forcing keyframes at cuts.
-# This re-encodes the segment for accuracy. :contentReference[oaicite:4]{index=4}
+# This re-encodes the segment for accuracy.
 exec yt-dlp "$URL" \
   -f "$FMT" -S "$SORT_PREF" --merge-output-format mp4/mkv \
   --download-sections "*${START}-${END}" --force-keyframes-at-cuts \
@@ -630,8 +630,6 @@ Examples:
   ytclip '(youtube link)' 3:51 - 3:54 360p
   ytclip '(youtube link)' 00:03:51 - 00:03:54 best
 ```
-
-**DISCLAIMER:** I do not condone the breaking of terms of services or piracy with the use of this tool.
 
 ---
 
