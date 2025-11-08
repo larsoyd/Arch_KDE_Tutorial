@@ -120,7 +120,7 @@ alias pacin='yay -S --needed --noconfirm'
 # Then reload zshrc like so:
 source ~/.zshrc
 ```
-#### TERMINAL USAGE GUIDE:
+#### TERMINAL USAGE GUIDE w/ AUTOSUGGESTIONS AND SYNTAX HIGHLIGHTING:
 
 - Right arrow: accept a suggestion to autocomplete a command you've run before. 
 
@@ -131,7 +131,6 @@ Every time you type 'yay', you can press Up to autofill your usual flags,
 then replace the package name with something else.
 
 - Syntax highlighting makes commands easier to read, and helps you spot obvious mistakes.
-```
 
 ## 3 · System Optimisation
 
