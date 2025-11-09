@@ -316,7 +316,8 @@ reflector \ # this is a line, press enter
 reflector -c NO,SE,DK,DE,NL -a 12 -p https \
 -l 10 --sort rate --save /etc/pacman.d/mirrorlist
 
-# or if you want to test the mirrors by speed do:
+# NOTE: This is slower but you will guaranteed have the best mirrors if you do this
+# if you want to test the mirrors by speed do this:
 reflector -c NO,SE,DK,DE,NL -a 12 -p https \
 --sort rate --fastest 10 --download-timeout 10 --save /etc/pacman.d/mirrorlist
 ```
