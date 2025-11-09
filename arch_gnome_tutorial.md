@@ -207,8 +207,8 @@ nano /tmp/repart.d/10-esp.conf
 Type=esp
 Label=EFI
 Format=vfat
-SizeMinBytes=1G
-SizeMaxBytes=1G
+SizeMinBytes=2G
+SizeMaxBytes=2G
 ```
 
 ```bash
