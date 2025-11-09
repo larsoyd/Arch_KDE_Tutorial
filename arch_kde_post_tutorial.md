@@ -288,7 +288,7 @@ ln -sf ~/.config/mimeapps.list ~/.local/share/applications/mimeapps.list
 vainfo
 
 # Open up about:config and set:
-media.ffmpeg.vaapi.enabled to true
+media.hardware-video-decoding.force-enabled → true
 ```
 
 #### Ensure Firefox media keys dont conflict with Plasma
