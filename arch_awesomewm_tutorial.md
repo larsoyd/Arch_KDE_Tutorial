@@ -591,7 +591,8 @@ shutdown now
 #   -U clear     -> clear any existing UUID in the header
 mkswap -U clear --size 16G --file /swapfile
 ```
-
+```
+```
 edit:
 ```bash
 nano /etc/systemd/system/swapfile.swap
