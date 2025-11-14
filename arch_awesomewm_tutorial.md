@@ -579,6 +579,7 @@ umount -R /mnt
 shutdown now
 
 # Remove ArchISO USB from computer then boot back into new install
+```
 
 ---
 
@@ -590,8 +591,7 @@ shutdown now
 #   --file       -> create the file with correct mode and real blocks
 #   -U clear     -> clear any existing UUID in the header
 mkswap -U clear --size 16G --file /swapfile
-```
-```
+
 ```
 edit:
 ```bash
