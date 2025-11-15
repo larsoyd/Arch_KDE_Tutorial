@@ -581,16 +581,17 @@ exec awesome
 ```bash
 # Make executable
 chmod +x ~/.xinitrc
-
-# Now enter Awesome!
-startx
 ```
 
-### Copy default rc.lua to home so you can start ricing
-
+### Copy default rc.lua config
 ```bash
 mkdir -p ~/.config/awesome
 cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
+```
+
+```bash
+# Now enter Awesome!
+startx
 ```
 
 ### Optional: Add keyboard that persists if non-US default
