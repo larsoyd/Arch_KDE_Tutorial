@@ -570,8 +570,9 @@ nano ~/.xinitrc
 #!/bin/sh
 
 # Start xterm in the background
-# Temporary, just to have one when you log in
-xterm &
+# This is temporary. Later after your setup is done
+# you will probably want to comment this out
+( sleep 1 && xterm ) &
 
 # Start Awesome
 exec awesome
