@@ -519,10 +519,38 @@ shutdown now
 
 ---
 
-### 4.10 Enable Other Services
+### Login and Prepare Build Flags
+
+Login to user:
+
+```bash
+# Enter user name then your password
+```
+
+Build Optimization
+```bash
+sudo nano /etc/makepkg.conf
+```
+
+Add
+```bash
+CFLAGS="-march=native -O2 -pipe -fno-plt -fexceptions \
+        -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security \
+        -fstack-clash-protection -fcf-protection=full"
+CXXFLAGS="${CFLAGS}"
+MAKEFLAGS="-j$(nproc)"
+```
+
+
+### Enable Any Other Services
 
 ```bash
 systemctl enable fstrim.timer reflector.timer pkgstats.timer
 ```
 
+### Reboot
+
+```bash
+reboot
+```
 
